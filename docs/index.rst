@@ -11,6 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   pipeline_steps
+
 
 
 Indices and tables
