@@ -18,13 +18,13 @@ Pipeline consists of 5 steps. Images are input of pipeline with result being rec
    * - ``detect_features``
      - images
      - Detect features and extract SIFT descriptors from each image. Build FLANN index used to speed up nearest neighbour search.
-     - sift, flann
+     - features, flann
    * - ``match_features``
      - images, sift, flann
      - Find matching features, then filter to retain only robust matches.
      - robust matches
    * - ``create_tracks``
-     - robust_matches, sift
+     - robust_matches, features
      - Find tracks. Each track is a list of SIFT features representing (likely) the same "real physical feature" in multiple images. Output contains pixel coordinates of matched point and SIFT feature id in each of track's images.
      - tracks
    * - ``reconstruct``
