@@ -13,10 +13,11 @@ import logging
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
 
 
-
 def good_track(track, min_length):
+    # Should have at least minimum length
     if len(track) < min_length:
         return False
+    # There should be no repeating images in the track
     images = [f[0] for f in track]
     if len(images) != len(set(images)):
         return False
@@ -44,7 +45,7 @@ for im in images:
     feature[im] = p1[:,:2]
 
 logging.info('creating features graph')
-g = nx.Graph()
+g = nx.Graph()  # Graph with nodes (image_filename, feature index) and edges representing match
 for im1, im2 in combinations(images, 2):
     matches_file = data.robust_matches_file(im1, im2)
     if os.path.isfile(matches_file):
